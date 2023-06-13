@@ -26,3 +26,6 @@ coverage.*
 # VSCode Workspace
 *.code-workspace
 .vscode
+
+# IntelliJ
+.idea/
