@@ -2,8 +2,7 @@ import flask
 import requests
 
 
-url = "https://cpianypointval.cms.gov/mocking/api/v1/sources/exchange/assets/51ece9dd-6045-4d01-b7c4-fe6856fdbdc0" \
-      "/exp-pecos-providers/1.0.35/m/providers"
+url = "PLACEHOLDER"
 
 
 def get_from_response(items: List[Dict[str]], key: str, value: str):
