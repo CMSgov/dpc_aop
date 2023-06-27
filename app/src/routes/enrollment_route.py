@@ -26,12 +26,17 @@ def get_ao_information(npi: str, include_fala: bool = False, include_sanctions: 
     }
     provider_response = requests.post(url, data=payload, headers=headers)
     provider = provider_response.json["provider"]
-    fala = provider.get("fala", None)
-    med_sanctions = provider.get("medSanctions", None)
+
     payload["identity"] = {
         "idType": provider["idType"],
         "id": provider["id"],
     }
+
+    # if any fala or sanctions, raise
+    fala = provider.get("fala", None)
+    med_sanctions = provider.get("medSanctions", None)
+    if fala or med_sanctions:
+        raise
 
     # get current enrollment ID from provider ID and NPI
     enrollment_response = requests.post(url + "/enrollments", data=payload)
