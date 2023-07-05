@@ -2,7 +2,10 @@ import os
 import requests
 from src.util.local import load_local_env_vars
 
-def get_pecos_access_token() -> dict[str, str]:
+# The string returned from this function should be passed into the Authorization
+# header for any requests to the PECOS API, with the following format:
+# Authorization: Bearer {token}
+def get_pecos_access_token() -> str:
     load_local_env_vars()
     url = os.getenv('PECOS_API_TOKEN_URL', None)
     headers = {
